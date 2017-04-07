@@ -29,12 +29,12 @@ describe('status fetch matchers', function () {
         return expect(nodeFetch.fetchCreated()).to.be.created();
       });
       it('created not success', done => {
-        err(expect(nodeFetch.fetchUnAuthorized()).to.be.created(),
+        err(expect(nodeFetch.fetchUnauthorized()).to.be.created(),
           'expected http status to equal 201',
           done)
       });
-      it('unAuthorized', () => {
-        return expect(nodeFetch.fetchUnAuthorized()).to.be.unAuthorized();
+      it('unauthorized', () => {
+        return expect(nodeFetch.fetchUnauthorized()).to.be.unauthorized();
       });
       it('serviceUnAvailable', () => {
         return expect(nodeFetch.fetchServiceUnavailable()).to.be.serviceUnAvailable();
@@ -53,7 +53,7 @@ describe('status fetch matchers', function () {
         return expect(nodeFetch.fetchWithStatus(status)).to.haveStatus(status);
       });
       it('haveStatus not success', done => {
-        err(expect(nodeFetch.fetchUnAuthorized()).to.be.haveStatus(155),
+        err(expect(nodeFetch.fetchUnauthorized()).to.be.haveStatus(155),
           'expected http status to equal 155',
           done)
       });

@@ -19,7 +19,7 @@ module.exports.fetchCreated = () => {
 };
 
 
-module.exports.fetchUnAuthorized = () => {
+module.exports.fetchUnauthorized = () => {
   return nodeFetch('http://localhost:3000/un-authorized');
 };
 
