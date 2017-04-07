@@ -5,6 +5,32 @@
 Matchers for node-fetch promise response.
 It helps the tests to be more declarative.
 
+## TL;DR
+
+- Verbose way to test node-fetch response:
+```javascript
+   it('some-test', function(done){
+      nodeFetch('http://localhost/')
+         .then(res => {
+            expect(res.status).to.equal(200);
+            return text();
+         }).then(text => {
+            expect(text).to.equal('foo');
+         })
+   });
+```
+
+- Using this lib:
+```javascript
+   it('some-test', function(){
+     return nodeFetch('http://localhost/').to.be.successful()
+                            .and.haveBodyText('foo');
+
+   });
+```
+
+
+
 ## Install (for dev only - used by tests)
 ```shell
 $ npm i node-fetch-response-matchers --save-dev
