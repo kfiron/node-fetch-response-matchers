@@ -5,7 +5,6 @@ module.exports = (chai, utils) => {
 
   statusMethod('successful', 200);
   statusMethod('created', 201);
-  statusMethod('redirected', 301);
   statusMethod('unAuthorized', 401);
   statusMethod('rejected', 403);
   statusMethod('notFound', 404);
