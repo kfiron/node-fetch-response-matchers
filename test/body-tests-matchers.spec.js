@@ -14,7 +14,6 @@ describe('node fetch matchers', function () {
 
   chai.use(nodeFetchMatchers);
 
-
   describe('body content validation', () => {
     it('haveBodyObject', () => {
       return expect(nodeFetch.fetchSuccess()).to.be.haveBodyObject(responseObject);

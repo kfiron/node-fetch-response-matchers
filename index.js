@@ -4,6 +4,7 @@ module.exports = (chai, utils) => {
 
   require('./lib/status-methods')(method);
   require('./lib/body-methods')(method);
+  require('./lib/header-methods')(method);
 
 
 
