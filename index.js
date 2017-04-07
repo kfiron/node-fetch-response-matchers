@@ -1,11 +1,9 @@
 'use strict';
- const statusMethods = require('./lib/status-methods'),
-       bodyMethods = require('./lib/body-methods');
 
 module.exports = (chai, utils) => {
 
-  statusMethods.addStatusMethods(method);
-  bodyMethods.addBodyMethods(method);
+  require('./lib/status-methods')(method);
+  require('./lib/body-methods')(method);
 
 
 
