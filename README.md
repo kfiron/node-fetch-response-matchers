@@ -4,7 +4,6 @@ It helps the tests to be more declarative.
 
 ## Install (for dev only - used by tests)
 ```shell
-$ npm install
 $ npm i node-fetch-response-matchers --save-dev
 ```
 
