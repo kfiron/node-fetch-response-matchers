@@ -2,18 +2,14 @@
 const expect = require('chai').expect,
   chai = require('chai'),
   err = require('./drivers/test-helpers').err,
+  beforeAndAfter = require('./drivers/test-helpers').beforeAndAfter,
   collaborator = require('./drivers/collaborator'),
   nodeFetch = require('./drivers/fetch-driver'),
   nodeFetchMatchers = require('..');
 
 describe('status fetch matchers', function () {
 
-  before(() => {
-    collaborator.before();
-  });
-  after(() => {
-    collaborator.after();
-  });
+  beforeAndAfter();
 
   chai.use(nodeFetchMatchers);
 

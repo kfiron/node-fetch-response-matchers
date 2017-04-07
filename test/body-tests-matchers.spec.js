@@ -1,18 +1,13 @@
 'use strict';
 const expect = require('chai').expect,
   chai = require('chai'),
-  collaborator = require('./drivers/collaborator'),
+  beforeAndAfter = require('./drivers/test-helpers').beforeAndAfter,
   nodeFetch = require('./drivers/fetch-driver'),
   nodeFetchMatchers = require('..');
 
 describe('node fetch matchers', function () {
 
-  before(() => {
-    collaborator.before();
-  });
-  after(() => {
-    collaborator.after();
-  });
+  beforeAndAfter();
 
   var responseObject = {foo: 'bar'};
   var responseObjectText = JSON.stringify(responseObject);
