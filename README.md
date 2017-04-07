@@ -75,43 +75,21 @@ You can all use chai "not" and compose by chai "and", for example
 | haveStatus()         | (status) | Assert that the status is provided number argument    |
 
 
-### successful()
-Assert that the status is 200 OK
-
-### created
-Assert that the status is 201
-
-### unAuthorized
-Assert that the status is 401
-
-### rejected
-Assert that the status is 403
-
-### notFound
-Assert that the status is 404
-
-### serverError
-Assert that the status is 500
-
-### serviceUnAvailable
-Assert that the status is 503
-
-### haveStatus(statusNumber)
-Assert that the status is provided number argument
 
 ## Body matchers
-### haveBodyObject(obj)
-Assert equal provided object
 
-### haveBodyText(text)
-Assert equal provided string text
+| API function         | params    | description                             |
+| ----------------------|----------| ----------------------------------------|
+| haveBodyObject()      | (obj)    | Assert equal provided object            |
+| haveBodyText()        | (text)   | Assert equal provided string text       |
+| haveBodyRegexpMatch() | (regexp) | Assert match body on regular expression |
 
-### haveBodyRegexpMatch(regexp)
-Assert match body on regular expression
+
 
 ## Header matchers
-### haveHeader(name, value)
-Assert that response contains header by provided name and value
 
-### headerExists
-Assert that response contains header by provided name
+| API function  | params         | description                                                     |
+| --------------|----------------| ----------------------------------------------------------------|
+| haveHeader()  | (name, value)  | Assert that response contains header by provided name and value |
+| headerExists()| (name)         | Assert that response contains header by provided name           |
+
