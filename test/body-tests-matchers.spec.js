@@ -14,17 +14,16 @@ describe('node fetch matchers', function () {
 
   chai.use(nodeFetchMatchers);
 
-  describe('body fetch matchers', () => {
-    describe('content validation', () => {
-      it('haveBodyObject', () => {
-        return expect(nodeFetch.fetchSuccess()).to.be.haveBodyObject(responseObject);
-      });
-      it('haveBodyText', () => {
-        return expect(nodeFetch.fetchSuccess()).to.be.haveBodyText(responseObjectText);
-      });
-      it('haveBodyRegexpMatch', () => {
-        return expect(nodeFetch.fetchSuccess()).to.be.haveBodyRegexpMatch(/foo/);
-      });
+
+  describe('body content validation', () => {
+    it('haveBodyObject', () => {
+      return expect(nodeFetch.fetchSuccess()).to.be.haveBodyObject(responseObject);
+    });
+    it('haveBodyText', () => {
+      return expect(nodeFetch.fetchSuccess()).to.be.haveBodyText(responseObjectText);
+    });
+    it('haveBodyRegexpMatch', () => {
+      return expect(nodeFetch.fetchSuccess()).to.be.haveBodyRegexpMatch(/foo/);
     });
   });
 
