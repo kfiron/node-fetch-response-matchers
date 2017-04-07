@@ -16,6 +16,7 @@ It helps the tests to be more declarative.
             return text();
          }).then(text => {
             expect(text).to.equal('foo');
+            done();
          })
    });
 ```
