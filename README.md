@@ -64,7 +64,7 @@ You can all use chai "not" and compose by chai "and", for example
 ## Status matchers
 
 | API function       | params   | description                      |
-| -------------      |----------| --------------------------------:|
+| -------------      |----------| ---------------------------------|
 | successful         | ()       | Assert that the status is 200 OK |
 | created            | ()       | Assert that the status is 201    |
 | unAuthorized       | ()       | Assert that the status is 401    |
