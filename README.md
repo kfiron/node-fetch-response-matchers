@@ -1,4 +1,7 @@
 # node-fetch-response-matchers
+
+[![Build Status](https://travis-ci.org/kfiron/node-fetch-response-matchers.svg?branch=master)](https://travis-ci.org/kfiron/node-fetch-response-matchers)
+
 Matchers for node-fetch promise response.
 It helps the tests to be more declarative.
 
