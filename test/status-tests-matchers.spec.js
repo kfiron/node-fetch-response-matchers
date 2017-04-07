@@ -6,14 +6,14 @@ const expect = require('chai').expect,
   nodeFetch = require('./drivers/fetch-driver'),
   nodeFetchMatchers = require('..');
 
-describe('node fetch matchers', function () {
+describe('status fetch matchers', function () {
 
   before(() => {
     collaborator.before();
   });
-
-  var responseObject = {foo: 'bar'};
-  var responseObjectText = JSON.stringify(responseObject);
+  after(() => {
+    collaborator.after();
+  });
 
   chai.use(nodeFetchMatchers);
 
@@ -54,17 +54,6 @@ describe('node fetch matchers', function () {
       });
     });
 
-    describe('content validation', () => {
-      it('haveBodyObject', () => {
-        return expect(nodeFetch.fetchSuccess()).to.be.haveBodyObject(responseObject);
-      });
-      it('haveBodyText', () => {
-        return expect(nodeFetch.fetchSuccess()).to.be.haveBodyText(responseObjectText);
-      });
-      it('haveBodyRegexpMatch', () => {
-        return expect(nodeFetch.fetchSuccess()).to.be.haveBodyRegexpMatch(/foo/);
-      });
-    });
   });
 
 

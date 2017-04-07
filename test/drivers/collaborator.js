@@ -50,6 +50,11 @@ app.get('/status/:code', function (req, res) {
 });
 
 
+var server;
 module.exports.before = ()=> {
-  app.listen(3000);
+  server = app.listen(3000);
+};
+
+module.exports.after = ()=> {
+  server.close();
 };
