@@ -21,8 +21,8 @@ module.exports = (chai, utils) => {
       }).then(result => {
         this.assert(
           options.predicate(result.res, result.text, args),
-          options.msgSuccess,
-          options.msgFail,
+          options.msgSuccess(args),
+          options.msgFail(args),
           options.expected(args),
           options.actual(result.res, result.text)
         );
