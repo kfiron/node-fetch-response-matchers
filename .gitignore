@@ -1,0 +1,10 @@
+.classpath
+.project
+.settings/
+target/
+*.iml
+.idea
+dependency-reduced-pom.xml
+logs/
+node_modules/
+.DS_Store
