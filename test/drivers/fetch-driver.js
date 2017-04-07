@@ -14,6 +14,23 @@ module.exports.fetchRejected = () => {
   return nodeFetch('http://localhost:3000/reject');
 };
 
+module.exports.fetchCreated = () => {
+  return nodeFetch('http://localhost:3000/created');
+};
+
+
+module.exports.fetchUnAuthorized = () => {
+  return nodeFetch('http://localhost:3000/un-authorized');
+};
+
+module.exports.fetchForbidden = () => {
+  return nodeFetch('http://localhost:3000/forbidden');
+};
+
+module.exports.fetchServiceUnavailable = () => {
+  return nodeFetch('http://localhost:3000/service-unavailable');
+};
+
 module.exports.fetchNotFound = () => {
   return nodeFetch('http://localhost:3000/not-found');
 };

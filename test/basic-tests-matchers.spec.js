@@ -30,8 +30,14 @@ describe('node fetch matchers', function () {
       });
     });
     describe('popular statuses', () => {
-      it('rejected', () => {
-        return expect(nodeFetch.fetchRejected()).to.be.rejected();
+      it('created', () => {
+        return expect(nodeFetch.fetchCreated()).to.be.created();
+      });
+      it('unAuthorized', () => {
+        return expect(nodeFetch.fetchUnAuthorized()).to.be.unAuthorized();
+      });
+      it('serviceUnAvailable', () => {
+        return expect(nodeFetch.fetchServiceUnavailable()).to.be.serviceUnAvailable();
       });
       it('notFound', () => {
         return expect(nodeFetch.fetchNotFound()).to.be.notFound();
