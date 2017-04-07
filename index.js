@@ -1,73 +1,13 @@
 'use strict';
-
+ const statusMethods = require('./lib/status-methods'),
+       bodyMethods = require('./lib/body-methods');
 
 module.exports = (chai, utils) => {
 
-  statusMethod('successful', 200);
-  statusMethod('created', 201);
-  statusMethod('unAuthorized', 401);
-  statusMethod('rejected', 403);
-  statusMethod('notFound', 404);
-  statusMethod('serverError', 500);
-  statusMethod('serviceUnAvailable', 503);
-  statusMethod('haveStatus'); // TODO refactor that
-
-  bodyMethod('haveBodyObject',
-    function predicate(textResponse, text) {
-      return textResponse == JSON.stringify(text)
-    },
-    function actual(text) {
-      return JSON.parse(text)
-    });
-  bodyMethod('haveBodyText',
-    function predicate(textResponse, text) {
-      return textResponse == text
-    },
-    function actual(text) {
-      return text
-    });
-  bodyMethod('haveBodyRegexpMatch',
-    function predicate(textResponse, regexp) {
-      return textResponse.match(regexp)
-    },
-    function actual(text) {
-      return text
-    });
+  statusMethods.addStatusMethods(method);
+  bodyMethods.addBodyMethods(method);
 
 
-  function bodyMethod(name, predicate, actual) {
-    method({
-      name: name,
-      predicate: function (res, text, args) {
-        return  predicate(text, args[0])
-      },
-      msgSuccess: 'expected to match body',
-      msgFail: 'expected not to match body',
-      expected: function (args) {
-        return args[0]
-      },
-      actual: function (res, text) {
-        return actual(text);
-      }
-    });
-  }
-
-  function statusMethod(name, code) {
-    method({
-      name: name,
-      predicate: function (res, text, args) {
-       return (args.length == 0) ? res.status == code : res.status == args[0];
-      },
-      msgSuccess: 'expected http status to equal ' + code,
-      msgFail: 'expected status to not equal ' + code,
-      expected: function () {
-        return code;
-      },
-      actual: function (res) {
-        return res.status;
-      }
-    });
-  }
 
   function method(options) {
     utils.addMethod(chai.Assertion.prototype, options.name, function () {
