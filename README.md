@@ -54,22 +54,22 @@ describe('test suite', function(){
         return nodeFetch('http://localhost/').to.be.notFound();
     });
     it('http status assert', function(){
-        return nodeFetch('http://localhost/').to.be.haveStatus(500);
+        return nodeFetch('http://localhost/').to.haveStatus(500);
     });
     it('have header', function(){
-       return nodeFetch('http://localhost/').to.be.haveHeader('connection', 'close');
+       return nodeFetch('http://localhost/').to.haveHeader('connection', 'close');
     });
     it('header exists', function(){
-        return nodeFetch('http://localhost/').to.be.headerExists('connection');
+        return nodeFetch('http://localhost/').to.headerExists('connection');
     });
     it('have body object', function(){
-       return nodeFetch('http://localhost/').to.be.haveBodyObject({foo: 'bar'});
+       return nodeFetch('http://localhost/').to.haveBodyObject({foo: 'bar'});
     });
     it('have body text', function(){
-       return nodeFetch('http://localhost/').to.be.haveBodyText('foo');
+       return nodeFetch('http://localhost/').to.haveBodyText('foo');
     });
     it('match body by regexp', function(){
-       return nodeFetch('http://localhost/').to.be.haveBodyRegexpMatch(/foo/gi);
+       return nodeFetch('http://localhost/').to.haveBodyRegexpMatch(/foo/gi);
     });
 });
 ```
