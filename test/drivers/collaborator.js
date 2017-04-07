@@ -44,6 +44,11 @@ app.get('/service-unavailable', function (req, res) {
   res.send(JSON.stringify(response))
 });
 
+app.get('/status/:code', function (req, res) {
+  res.statusCode = parseInt(req.params['code']);
+  res.send(JSON.stringify(response))
+});
+
 
 module.exports.before = ()=> {
   app.listen(3000);

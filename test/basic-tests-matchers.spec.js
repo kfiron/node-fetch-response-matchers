@@ -47,6 +47,13 @@ describe('node fetch matchers', function () {
       });
     });
 
+    describe('haveStatus', () => {
+      it('haveStatus', () => {
+        const status = 150;
+        return expect(nodeFetch.fetchWithStatus(status)).to.haveStatus(status);
+      });
+    });
+
     describe('content validation', () => {
       it('haveBodyObject', () => {
         return expect(nodeFetch.fetchSuccess()).to.be.haveBodyObject(responseObject);

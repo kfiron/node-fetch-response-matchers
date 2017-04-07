@@ -10,6 +10,7 @@ module.exports = (chai, utils) => {
   statusMethod('notFound', 404);
   statusMethod('serverError', 500);
   statusMethod('serviceUnAvailable', 503);
+  statusMethod('haveStatus'); // TODO refactor that
 
   bodyMethod('haveBodyObject',
     function predicate(textResponse, text) {
@@ -54,8 +55,8 @@ module.exports = (chai, utils) => {
   function statusMethod(name, code) {
     method({
       name: name,
-      predicate: function (res) {
-        return res.status == code;
+      predicate: function (res, text, args) {
+       return (args.length == 0) ? res.status == code : res.status == args[0];
       },
       msgSuccess: 'expected http status to equal ' + code,
       msgFail: 'expected status to not equal ' + code,

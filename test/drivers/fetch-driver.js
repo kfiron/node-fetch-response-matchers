@@ -38,3 +38,9 @@ module.exports.fetchNotFound = () => {
 module.exports.fetchServerError = () => {
   return nodeFetch('http://localhost:3000/server-error');
 };
+
+module.exports.fetchWithStatus = code => {
+  return nodeFetch('http://localhost:3000/status/' + code);
+};
+
+
