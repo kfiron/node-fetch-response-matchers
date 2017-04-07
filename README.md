@@ -20,7 +20,7 @@ It helps the tests to be more declarative.
    });
 ```
 
-- Using this lib:
+- Using this lib in more declarative way with hide the promise complexity:
 ```javascript
    it('some-test', function(){
      return nodeFetch('http://localhost/').to.be.successful()
