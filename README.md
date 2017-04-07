@@ -94,7 +94,7 @@ You can all use chai "not" and compose by chai "and", for example
 | ---------------------|----------| ---------------------------------|
 | successful()         | ()       | Assert that the status is 200 OK |
 | created()            | ()       | Assert that the status is 201    |
-| unAuthorized()       | ()       | Assert that the status is 401    |
+| unauthorized()       | ()       | Assert that the status is 401    |
 | rejected()           | ()       | Assert that the status is 403    |
 | notFound()           | ()       | Assert that the status is 404    |
 | serverError()        | ()       | Assert that the status is 500    |
