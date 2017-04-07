@@ -13,7 +13,7 @@ It helps the tests to be more declarative.
       nodeFetch('http://localhost/')
          .then(res => {
             expect(res.status).to.equal(200);
-            return text();
+            return res.text();
          }).then(text => {
             expect(text).to.equal('foo');
             done();
