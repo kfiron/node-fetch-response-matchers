@@ -1,7 +1,7 @@
 {
   "name": "node-fetch-response-matchers",
   "version": "1.0.1",
-  "description": "Test matchers bla bla",
+  "description": "Test matchers for chai, make your tests to look more declarative and hides all promises noise",
   "keywords": [
     "chai",
     "matchers",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "{repo url}"
+    "url": "https://github.com/kfiron/node-fetch-response-matchers"
   },
   "engines": {
     "node": ">=4"
