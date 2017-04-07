@@ -54,7 +54,7 @@ You can all use chai "not" and compose by chai "and", for example
    });
    it('and', function(){
       return nodeFetch('http://localhost/').to.be.successful()
-                                                .haveBodyText('foo');
+                                                .and.haveBodyText('foo');
    });
 ```
 
