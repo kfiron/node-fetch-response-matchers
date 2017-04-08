@@ -73,7 +73,7 @@ describe('test suite', function(){
     });
     it('match body with predicate', function(){
         const haveFoo = text => text.indexOf('foo') != -1;
-        return nodeFetch('http://localhost/').to.haveBodyThat(/foo/gi);
+        return nodeFetch('http://localhost/').to.haveBodyThat(haveFoo);
     });
 });
 ```
