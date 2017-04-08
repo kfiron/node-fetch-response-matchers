@@ -94,7 +94,7 @@ You can all use chai "not" and compose by chai "and", for example
    });
 ```
 
-### Full status API list
+#### Full status matchers list
 
 | API function         | params   | description                      |
 | ---------------------|----------| ---------------------------------|
@@ -111,6 +111,13 @@ You can all use chai "not" and compose by chai "and", for example
 
 ## Body matchers
 
+```javascript
+   it('have body object', () => {
+     return expect(fetch('http://localhost/').to.be.haveBodyObject({foo: 'bar'});
+   });
+```
+#### Full body matchers list
+
 | API function         | params             | description                                                  |
 | ----------------------|-------------------| -------------------------------------------------------------|
 | haveBodyObject()      | (obj)             | Assert equal provided object                                 |
@@ -122,12 +129,27 @@ You can all use chai "not" and compose by chai "and", for example
 
 ## Header matchers
 
+```javascript
+   it('have header', () => {
+     return expect(fetch('http://localhost/').to.be.haveHeader('connection', 'close');
+   });
+```
+#### Full headers matchers list
+
 | API function  | params         | description                                                     |
 | --------------|----------------| ----------------------------------------------------------------|
 | haveHeader()  | (name, value)  | Assert that response contains header by provided name and value |
 | headerExists()| (name)         | Assert that response contains header by provided name           |
 
 ## Cookie matchers
+
+```javascript
+   it('have cookie', () => {
+     return expect(fetch('http://localhost/').to.be.haveCookie('foo', 'bar');
+   });
+```
+#### Full cookie matchers list
+
 
 | API function       | params         | description                                                     |
 | -------------------|----------------| ----------------------------------------------------------------|
