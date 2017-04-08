@@ -49,6 +49,12 @@ app.get('/status/:code', function (req, res) {
   res.send(JSON.stringify(response))
 });
 
+app.get('/cookie/:name/:val', function (req, res) {
+  res.cookie(req.params['name'], req.params['val'], { domain: '.example.com'});
+  res.cookie('foo', 'bar', { domain: '.example.com'});
+  res.send(JSON.stringify(response))
+});
+
 
 var server;
 module.exports.before = ()=> {

@@ -5,6 +5,7 @@ module.exports = (chai, utils) => {
   require('./lib/status-methods')(method);
   require('./lib/body-methods')(method);
   require('./lib/header-methods')(method);
+  require('./lib/cookie-methods')(method);
 
   function method(options) {
     utils.addMethod(chai.Assertion.prototype, options.name, function () {

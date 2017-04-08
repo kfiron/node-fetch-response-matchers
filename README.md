@@ -50,30 +50,21 @@ describe('test suite', function(){
     it('http success test', function(){
         return expect(fetch('http://localhost/')).to.be.successful();
     });
-    it('http not found test', function(){
-        return expect(fetch('http://localhost/')).to.be.notFound();
-    });
     it('http status assert', function(){
         return expect(fetch('http://localhost/')).to.haveStatus(500);
     });
     it('have header', function(){
        return expect(fetch('http://localhost/')).to.haveHeader('connection', 'close');
     });
-    it('header exists', function(){
-        return expect(fetch('http://localhost/')).to.headerExists('connection');
-    });
-    it('have body object', function(){
-       return expect(fetch('http://localhost/')).to.haveBodyObject({foo: 'bar'});
-    });
     it('have body text', function(){
        return expect(fetch('http://localhost/')).to.haveBodyText('foo');
-    });
-    it('match body by regexp', function(){
-       return expect(fetch('http://localhost/')).to.haveBodyRegexpMatch(/foo/gi);
     });
     it('match body with predicate', function(){
         const haveFoo = text => text.indexOf('foo') != -1;
         return expect(fetch('http://localhost/')).to.haveBodyThat(haveFoo);
+    });
+    it('have cookie', function(){
+       return expect(fetch('http://localhost/')).to.haveCookie('foo', 'bar');
     });
 });
 ```
@@ -124,4 +115,11 @@ You can all use chai "not" and compose by chai "and", for example
 | --------------|----------------| ----------------------------------------------------------------|
 | haveHeader()  | (name, value)  | Assert that response contains header by provided name and value |
 | headerExists()| (name)         | Assert that response contains header by provided name           |
+
+## Cookie matchers
+
+| API function       | params         | description                                                     |
+| -------------------|----------------| ----------------------------------------------------------------|
+| haveCookieByName() | (name)         | Assert that cookie by name is written to the response           |
+| haveCookie()       | (name, value)  | Assert that cookie by name and value is written to the response           |
 

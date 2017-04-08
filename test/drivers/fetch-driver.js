@@ -43,4 +43,8 @@ module.exports.fetchWithStatus = code => {
   return nodeFetch('http://localhost:3000/status/' + code);
 };
 
+module.exports.fetchWithCookie = (name, val) => {
+  return nodeFetch(`http://localhost:3000/cookie/${name}/${val}`);
+};
+
 
