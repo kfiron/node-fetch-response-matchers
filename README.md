@@ -50,22 +50,6 @@ describe('test suite', function(){
     it('http success test', function(){
         return expect(fetch('http://localhost/')).to.be.successful();
     });
-    it('http status assert', function(){
-        return expect(fetch('http://localhost/')).to.haveStatus(500);
-    });
-    it('have header', function(){
-       return expect(fetch('http://localhost/')).to.haveHeader('connection', 'close');
-    });
-    it('have body text', function(){
-       return expect(fetch('http://localhost/')).to.haveBodyText('foo');
-    });
-    it('match body with predicate', function(){
-        const haveFoo = text => text.indexOf('foo') != -1;
-        return expect(fetch('http://localhost/')).to.haveBodyThat(haveFoo);
-    });
-    it('have cookie', function(){
-       return expect(fetch('http://localhost/')).to.haveCookie('foo', 'bar');
-    });
 });
 ```
 
