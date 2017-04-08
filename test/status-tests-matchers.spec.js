@@ -20,8 +20,8 @@ describe('status fetch matchers', function () {
       });
       it('successful not success', done => {
         err(expect(nodeFetch.fetchNotSuccess()).to.be.successful(),
-                   'expected http status to equal 200',
-                   done)
+          'expected http status 400 to equal 200',
+          done)
       });
     });
     describe('popular statuses', () => {
@@ -30,7 +30,7 @@ describe('status fetch matchers', function () {
       });
       it('created not success', done => {
         err(expect(nodeFetch.fetchUnauthorized()).to.be.created(),
-          'expected http status to equal 201',
+          'expected http status 401 to equal 201',
           done)
       });
       it('unauthorized', () => {
@@ -53,9 +53,9 @@ describe('status fetch matchers', function () {
         return expect(nodeFetch.fetchWithStatus(status)).to.haveStatus(status);
       });
       it('haveStatus not success', done => {
-        err(expect(nodeFetch.fetchUnauthorized()).to.be.haveStatus(155),
-          'expected http status to equal 155',
-          done)
+        return err(expect(nodeFetch.fetchUnauthorized()).to.be.haveStatus(155),
+          'expected http status 401 to equal 155',
+          done);
       });
     });
 
