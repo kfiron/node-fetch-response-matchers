@@ -10,7 +10,7 @@ It helps the tests to be more declarative.
 - Verbose way to test node-fetch response:
 ```javascript
    it('some-test', function(done){
-      nodeFetch('http://localhost/')
+      fetch('http://localhost/')
          .then(res => {
             expect(res.status).to.equal(200);
             return res.text();
@@ -24,7 +24,7 @@ It helps the tests to be more declarative.
 - Using this lib in more declarative way with hide the promise complexity:
 ```javascript
    it('some-test', function(){
-     return nodeFetch('http://localhost/').to.be.successful()
+     return fetch('http://localhost/').to.be.successful()
                             .and.haveBodyText('foo');
 
    });
@@ -41,39 +41,39 @@ $ npm i node-fetch-response-matchers --save-dev
 ```javascript
 
 const nodeFetchMatchers = require('node-fetch-response-matchers');
-const nodeFetch = require('node-fetch');
+const fetch = require('node-fetch');
 const chai = require('chai');
 
 chai.use(nodeFetchMatchers);
 
 describe('test suite', function(){
     it('http success test', function(){
-        return nodeFetch('http://localhost/').to.be.successful();
+        return fetch('http://localhost/').to.be.successful();
     });
     it('http not found test', function(){
-        return nodeFetch('http://localhost/').to.be.notFound();
+        return fetch('http://localhost/').to.be.notFound();
     });
     it('http status assert', function(){
-        return nodeFetch('http://localhost/').to.haveStatus(500);
+        return fetch('http://localhost/').to.haveStatus(500);
     });
     it('have header', function(){
-       return nodeFetch('http://localhost/').to.haveHeader('connection', 'close');
+       return fetch('http://localhost/').to.haveHeader('connection', 'close');
     });
     it('header exists', function(){
-        return nodeFetch('http://localhost/').to.headerExists('connection');
+        return fetch('http://localhost/').to.headerExists('connection');
     });
     it('have body object', function(){
-       return nodeFetch('http://localhost/').to.haveBodyObject({foo: 'bar'});
+       return fetch('http://localhost/').to.haveBodyObject({foo: 'bar'});
     });
     it('have body text', function(){
-       return nodeFetch('http://localhost/').to.haveBodyText('foo');
+       return fetch('http://localhost/').to.haveBodyText('foo');
     });
     it('match body by regexp', function(){
-       return nodeFetch('http://localhost/').to.haveBodyRegexpMatch(/foo/gi);
+       return fetch('http://localhost/').to.haveBodyRegexpMatch(/foo/gi);
     });
     it('match body with predicate', function(){
         const haveFoo = text => text.indexOf('foo') != -1;
-        return nodeFetch('http://localhost/').to.haveBodyThat(haveFoo);
+        return fetch('http://localhost/').to.haveBodyThat(haveFoo);
     });
 });
 ```
@@ -83,10 +83,10 @@ You can all use chai "not" and compose by chai "and", for example
 
 ```javascript
    it('not', function(){
-      return nodeFetch('http://localhost/').to.not.be.successful();
+      return fetch('http://localhost/').to.not.be.successful();
    });
    it('and', function(){
-      return nodeFetch('http://localhost/').to.be.successful()
+      return fetch('http://localhost/').to.be.successful()
                                                 .and.haveBodyText('foo');
    });
 ```
