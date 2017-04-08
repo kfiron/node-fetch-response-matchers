@@ -55,12 +55,6 @@ describe('body fetch matchers', function () {
       const haveFoo = text => text.indexOf('foo') != -1;
       return expect(nodeFetch.fetchSuccess()).to.be.haveBodyThat(haveFoo);
     });
-    it('haveBodyThat not success', done => {
-      const haveFoo = text => text.indexOf('foo') == -1;
-      return err(expect(nodeFetch.fetchSuccess()).to.be.haveBodyThat(haveFoo),
-        'expected [Function: haveFoo] to match body with \'{"foo":"bar"}\'',
-        done);
-    });
   });
 
 
