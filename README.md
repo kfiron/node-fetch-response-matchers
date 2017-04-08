@@ -71,6 +71,10 @@ describe('test suite', function(){
     it('match body by regexp', function(){
        return nodeFetch('http://localhost/').to.haveBodyRegexpMatch(/foo/gi);
     });
+    it('match body with predicate', function(){
+        const haveFoo = text => text.indexOf('foo') != -1;
+        return nodeFetch('http://localhost/').to.haveBodyThat(/foo/gi);
+    });
 });
 ```
 
@@ -105,11 +109,12 @@ You can all use chai "not" and compose by chai "and", for example
 
 ## Body matchers
 
-| API function         | params    | description                             |
-| ----------------------|----------| ----------------------------------------|
-| haveBodyObject()      | (obj)    | Assert equal provided object            |
-| haveBodyText()        | (text)   | Assert equal provided string text       |
-| haveBodyRegexpMatch() | (regexp) | Assert match body on regular expression |
+| API function         | params             | description                                                  |
+| ----------------------|-------------------| -------------------------------------------------------------|
+| haveBodyObject()      | (obj)             | Assert equal provided object                                 |
+| haveBodyText()        | (text)            | Assert equal provided string text                            |
+| haveBodyRegexpMatch() | (regexp)          | Assert match body on regular expression                      |
+| haveBodyThat()        | (predicate(text)) | Assert match body on provided function predicate on the text |
 
 
 
