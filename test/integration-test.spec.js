@@ -16,7 +16,7 @@ describe('status fetch matchers', function () {
   it('integration with chai "not"', () => {
     return expect(nodeFetch.fetchSuccess()).to.not.be.rejected();
   });
-  it.only('integration with chai "and"', () => {
+  it.skip('integration with chai "and"', () => {
     return expect(nodeFetch.fetchSuccess()).to.be.successful()
             .and.to.haveBodyObject(responseObject);
   });
