@@ -13,20 +13,14 @@ It helps the tests to be more declarative.
       fetch('http://localhost/')
          .then(res => {
             expect(res.status).to.equal(200);
-            return res.text();
-         }).then(text => {
-            expect(text).to.equal('foo');
-            done();
-         })
+         });
    });
 ```
 
 - Using this lib in more declarative way with hide the promise complexity:
 ```javascript
    it('some-test', function(){
-     return fetch('http://localhost/').to.be.successful()
-                            .and.to.haveBodyText('foo');
-
+     return fetch('http://localhost/').to.be.successful();
    });
 ```
 
@@ -79,15 +73,11 @@ describe('test suite', function(){
 ```
 
 ## API description
-You can all use chai "not" and compose by chai "and", for example
+You can all use chai "not", for example
 
 ```javascript
    it('not', function(){
       return fetch('http://localhost/').to.not.be.successful();
-   });
-   it('and', function(){
-      return fetch('http://localhost/').to.be.successful()
-                                                .and.haveBodyText('foo');
    });
 ```
 
