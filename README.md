@@ -24,7 +24,7 @@ It helps the tests to be more declarative.
 - Using this lib in more declarative way with hide the promise complexity:
 ```javascript
    it('some-test', function(){
-     return fetch('http://localhost/').to.be.successful()
+     return expect(fetch('http://localhost/')).to.be.successful()
                             .and.to.haveBodyText('foo');
 
    });
@@ -48,32 +48,32 @@ chai.use(nodeFetchMatchers);
 
 describe('test suite', function(){
     it('http success test', function(){
-        return fetch('http://localhost/').to.be.successful();
+        return expect(fetch('http://localhost/')).to.be.successful();
     });
     it('http not found test', function(){
-        return fetch('http://localhost/').to.be.notFound();
+        return expect(fetch('http://localhost/')).to.be.notFound();
     });
     it('http status assert', function(){
-        return fetch('http://localhost/').to.haveStatus(500);
+        return expect(fetch('http://localhost/')).to.haveStatus(500);
     });
     it('have header', function(){
-       return fetch('http://localhost/').to.haveHeader('connection', 'close');
+       return expect(fetch('http://localhost/')).to.haveHeader('connection', 'close');
     });
     it('header exists', function(){
-        return fetch('http://localhost/').to.headerExists('connection');
+        return expect(fetch('http://localhost/')).to.headerExists('connection');
     });
     it('have body object', function(){
-       return fetch('http://localhost/').to.haveBodyObject({foo: 'bar'});
+       return expect(fetch('http://localhost/')).to.haveBodyObject({foo: 'bar'});
     });
     it('have body text', function(){
-       return fetch('http://localhost/').to.haveBodyText('foo');
+       return expect(fetch('http://localhost/')).to.haveBodyText('foo');
     });
     it('match body by regexp', function(){
-       return fetch('http://localhost/').to.haveBodyRegexpMatch(/foo/gi);
+       return expect(fetch('http://localhost/')).to.haveBodyRegexpMatch(/foo/gi);
     });
     it('match body with predicate', function(){
         const haveFoo = text => text.indexOf('foo') != -1;
-        return fetch('http://localhost/').to.haveBodyThat(haveFoo);
+        return expect(fetch('http://localhost/')).to.haveBodyThat(haveFoo);
     });
 });
 ```
@@ -83,10 +83,10 @@ You can all use chai "not" and compose by chai "and", for example
 
 ```javascript
    it('not', function(){
-      return fetch('http://localhost/').to.not.be.successful();
+      return expect(fetch('http://localhost/')).to.not.be.successful();
    });
    it('and', function(){
-      return fetch('http://localhost/').to.be.successful()
+      return expect(fetch('http://localhost/')).to.be.successful()
                                                 .and.haveBodyText('foo');
    });
 ```
