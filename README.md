@@ -25,7 +25,7 @@ It helps the tests to be more declarative.
 ```javascript
    it('some-test', function(){
      return fetch('http://localhost/').to.be.successful()
-                            .and.haveBodyText('foo');
+                            .and.to.haveBodyText('foo');
 
    });
 ```
