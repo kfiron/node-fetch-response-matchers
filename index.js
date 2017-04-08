@@ -16,7 +16,6 @@ module.exports = (chai, utils) => {
         return res.text();
       }).then(text => {
         result.text = text;
-        utils.flag(that, "result", result);
         return result;
       }).then(result => {
         this.assert(
