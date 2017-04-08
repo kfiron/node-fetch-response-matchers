@@ -10,7 +10,8 @@ module.exports = (chai, utils) => {
     utils.addMethod(chai.Assertion.prototype, options.name, function () {
       var result = {};
       var args = arguments;
-      return this._obj.then(res => {
+      var that = this;
+      var derivedPromise = getBasePromise(this._obj).then(res => {
         result.res = res;
         return res.text();
       }).then(text => {
@@ -25,7 +26,18 @@ module.exports = (chai, utils) => {
           options.actual(result.res, result.text)
         );
       });
+
+      // credit to chai-as-promised
+      transferPromiseness(that, derivedPromise);
     });
+  }
+
+  function getBasePromise(assertion) {
+    return typeof assertion.then === "function" ? assertion : assertion._obj;
+  }
+
+  function transferPromiseness(assertion, promise) {
+    assertion.then = promise.then.bind(promise);
   }
 
 };

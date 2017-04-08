@@ -3,7 +3,7 @@ const expect = require('chai').expect,
   collaborator = require('./collaborator');
 
 module.exports.err = (promise, err, done) => {
-  promise.catch(e => {
+  promise.then().catch(e => {
     expect(e.message).to.equal(err);
     done();
   })
