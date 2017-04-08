@@ -13,11 +13,19 @@ module.exports = (chai, utils) => {
       var that = this;
       var derivedPromise = getBasePromise(this._obj).then(res => {
         result.res = res;
-        return res.text();
-      }).then(text => {
-        result.text = text;
         return result;
-      }).then(result => {
+      });
+
+      if(options.isBodyMatcher){
+        derivedPromise = derivedPromise.then(result => {
+          return result.res.text();
+        }).then(text => {
+          result.text = text;
+          return result;
+        });
+      }
+
+      derivedPromise = derivedPromise.then(result => {
         this.assert(
           options.predicate(result.res, result.text, args),
           options.msgSuccess(args),
