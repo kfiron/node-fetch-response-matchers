@@ -85,6 +85,17 @@ You can all use chai "not" and compose by chai "and", for example
 
 ## Status matchers
 
+```javascript
+   it('http success test', function(){
+      return expect(fetch('http://localhost/')).to.be.successful();
+   });
+   it('http status assert', function(){
+        return expect(fetch('http://localhost/')).to.haveStatus(500);
+   });
+```
+
+### Full status API list
+
 | API function         | params   | description                      |
 | ---------------------|----------| ---------------------------------|
 | successful()         | ()       | Assert that the status is 200 OK |
