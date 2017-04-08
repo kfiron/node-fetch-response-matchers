@@ -1,6 +1,6 @@
 {
   "name": "node-fetch-response-matchers",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Test matchers for chai, make your tests to look more declarative and hides all promises noise",
   "keywords": [
     "chai",

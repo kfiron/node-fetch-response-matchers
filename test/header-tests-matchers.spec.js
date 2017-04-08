@@ -25,7 +25,7 @@ describe('header fetch matchers', function () {
       let header = {};
       header[name] = value;
       return err(expect(nodeFetch.fetchSuccess()).to.haveHeader(name, value),
-        'expected match header',
+        'expected { \'0\': \'n\', \'1\': \'v\' } match headers',
         done);
     });
     it('headerExists', () => {
