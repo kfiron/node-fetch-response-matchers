@@ -97,7 +97,7 @@ You can all use chai "not" and compose by chai "and", for example
 
 ```javascript
    it('have body object', () => {
-     return expect(fetch('http://localhost/').to.be.haveBodyObject({foo: 'bar'});
+     return expect(fetch('http://localhost/').to.haveBodyObject({foo: 'bar'});
    });
 ```
 #### Full body matchers list
@@ -115,7 +115,7 @@ You can all use chai "not" and compose by chai "and", for example
 
 ```javascript
    it('have header', () => {
-     return expect(fetch('http://localhost/').to.be.haveHeader('connection', 'close');
+     return expect(fetch('http://localhost/').to.haveHeader('connection', 'close');
    });
 ```
 #### Full headers matchers list
@@ -129,7 +129,7 @@ You can all use chai "not" and compose by chai "and", for example
 
 ```javascript
    it('have cookie', () => {
-     return expect(fetch('http://localhost/').to.be.haveCookie('foo', 'bar');
+     return expect(fetch('http://localhost/').to.haveCookie('foo', 'bar');
    });
 ```
 #### Full cookie matchers list
