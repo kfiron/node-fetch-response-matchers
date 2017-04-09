@@ -135,8 +135,9 @@ You can all use chai "not" and compose by chai "and", for example
 #### Full cookie matchers list
 
 
-| API function       | params         | description                                                     |
-| -------------------|----------------| ----------------------------------------------------------------|
-| haveCookieByName() | (name)         | Assert that cookie by name is written to the response           |
-| haveCookie()       | (name, value)  | Assert that cookie by name and value is written to the response           |
+| API function       | params                     | description                                                               |
+| -------------------|----------------------------| --------------------------------------------------------------------------|
+| haveCookieByName() | (name)                     | Assert that cookie by name is written to the response                     |
+| haveCookie()       | (name, value)              | Assert that cookie by name and value is written to the response           |
+| haveCookieThat()   | (name, predicate(cookie))  | Assert that cookie by name and match given predicate on cookie properties |
 

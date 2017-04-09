@@ -42,5 +42,10 @@ describe('status fetch matchers', function () {
           done);
       });
     });
+    it('haveCookieThat(name, predicate(cookie))', () => {
+      const cookieDomainExampleCom = cookie => cookie.domain === '.example.com';
+      return expect(nodeFetch.fetchWithCookie(cookieName, cookieValue))
+        .to.haveCookieThat(cookieName, cookieDomainExampleCom);
+    });
   });
 });
