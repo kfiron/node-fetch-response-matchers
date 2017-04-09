@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kfiron/node-fetch-response-matchers.svg?branch=master)](https://travis-ci.org/kfiron/node-fetch-response-matchers)
 
-Matchers for node-fetch promise response.
+Chai plugin with matchers for node-fetch promise response.
 It helps the tests to be more declarative.
 
 ## TL;DR
@@ -34,7 +34,7 @@ It helps the tests to be more declarative.
 
 ## Install (for dev only - used by tests)
 ```shell
-$ npm i node-fetch-response-matchers --save-dev
+$ npm install --save-dev node-fetch-response-matchers
 ```
 
 ## Usage example
@@ -53,7 +53,7 @@ describe('test suite', function(){
 });
 ```
 
-## API description
+### Chai native plugin
 You can all use chai "not" and compose by chai "and", for example
 
 ```javascript
