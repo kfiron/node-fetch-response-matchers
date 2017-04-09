@@ -4,6 +4,7 @@
   "description": "Test matchers for chai, make your tests to look more declarative and hides all promises noise",
   "keywords": [
     "chai",
+    "chai-plugin",
     "matchers",
     "node-fetch",
     "http-response",
