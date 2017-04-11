@@ -7,7 +7,7 @@ It helps the tests to be more declarative.
 
 ## TL;DR
 
-- This lib gives you a declarative way to assert fetch response, Also it hides the promises their callbacks noise:
+- This lib gives you a declarative way to assert fetch response, Also it hides the promises and their callbacks noise:
 ```javascript
    it('some-test', function(){
      return expect(fetch('http://localhost/')).to.be.successful()
