@@ -31,7 +31,13 @@ describe('header fetch matchers', function () {
     it('headerExists', () => {
       return expect(nodeFetch.fetchSuccess()).to.headerExists(header1Name);
     });
+    it('haveHeaderThat', function(){
+      const headerWithCL = value => value.indexOf('cl') > -1;
+      return expect(nodeFetch.fetchSuccess()).to
+           .haveHeaderThat(header1Name, headerWithCL);
+    });
   });
+
 
 
 });
