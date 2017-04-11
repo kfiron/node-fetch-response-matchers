@@ -7,7 +7,16 @@ It helps the tests to be more declarative.
 
 ## TL;DR
 
-- Verbose way to test node-fetch response:
+- This lib gives you a declarative way to assert fetch response, Also it hides the promises their callbacks noise:
+```javascript
+   it('some-test', function(){
+     return expect(fetch('http://localhost/')).to.be.successful()
+                            .and.to.haveBodyText('foo');
+
+   });
+```
+
+- If you are not using this lib it becomes very verbose:
 ```javascript
    it('some-test', function(done){
       fetch('http://localhost/')
@@ -18,15 +27,6 @@ It helps the tests to be more declarative.
             expect(text).to.equal('foo');
             done();
          })
-   });
-```
-
-- Using this lib in more declarative way with hide the promise complexity:
-```javascript
-   it('some-test', function(){
-     return expect(fetch('http://localhost/')).to.be.successful()
-                            .and.to.haveBodyText('foo');
-
    });
 ```
 
