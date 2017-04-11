@@ -118,7 +118,7 @@ You can all use chai "not" and compose by chai "and", for example
      return expect(fetch('http://localhost/').to.haveHeader('connection', 'close');
    });
 ```
-#### Full headers matchers list
+#### Headers matchers list
 
 | API function    | params                  | description                                                                     |
 | ----------------|-------------------------| --------------------------------------------------------------------------------|
@@ -133,7 +133,7 @@ You can all use chai "not" and compose by chai "and", for example
      return expect(fetch('http://localhost/').to.haveCookie('foo', 'bar');
    });
 ```
-#### Full cookie matchers list
+#### Cookie matchers list
 
 
 | API function       | params                     | description                                                               |
