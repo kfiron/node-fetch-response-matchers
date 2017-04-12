@@ -125,6 +125,7 @@ You can all use chai "not" and compose by chai "and", for example
 | haveHeader()    | (name, value)           | Assert that response contains header by provided name and value                 |
 | headerExists()  | (name)                  | Assert that response contains header by provided name                           |
 | haveHeaderThat()| (name, predicate(value))| Assert that header with given name have true on the value for a given predicate |
+| haveHeaders()   | (headersMap)            | Assert that given key-value headers are exists in headers response              |
 
 ## Cookie matchers
 
