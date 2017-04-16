@@ -17,7 +17,7 @@ It helps the tests to be more declarative.
 ## Issues
 ### Composition using chai "and" does not works properly
 I have open issue with suggeste DSL which will be supported soon:
-[composition of matchers for http response](../issues/2)
+[composition of matchers for http response](../../issues/2)
 
 
 
