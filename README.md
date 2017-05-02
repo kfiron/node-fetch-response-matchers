@@ -10,16 +10,25 @@ It helps the tests to be more declarative.
 - This lib gives you a declarative way to assert fetch response, Also it hides the promises and their callbacks noise:
 ```javascript
    it('some-test', function(){
-     return expect(fetch('http://localhost/')).to.be.successful();
+     return expect(fetch('http://localhost/')).to.be.successful()
+                            .and.to.haveBodyText('foo');
+
    });
 ```
 
-## Issues
-### Composition using chai "and" does not works properly
-I have open issue with suggeste DSL which will be supported soon:
-
-
-[composition of matchers for http response](../../issues/2)
+- If you are not using this lib it becomes very verbose:
+```javascript
+   it('some-test', function(done){
+      fetch('http://localhost/')
+         .then(res => {
+            expect(res.status).to.equal(200);
+            return res.text();
+         }).then(text => {
+            expect(text).to.equal('foo');
+            done();
+         })
+   });
+```
 
 
 
@@ -40,6 +49,10 @@ chai.use(nodeFetchMatchers);
 describe('test suite', function(){
     it('http success test', function(){
         return expect(fetch('http://localhost/')).to.be.successful();
+    });
+    it('and', function(){
+          return expect(fetch('http://localhost/')).to.be.successful()
+                                                    .and.haveBodyText('foo');
     });
 });
 ```

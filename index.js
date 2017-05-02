@@ -19,15 +19,7 @@ module.exports = (chai, utils) => {
         derivedPromise = assert(promise, options, that, args);
         utils.flag(this, 'promise', derivedPromise);
       } else {
-        derivedPromise = utils.flag(this, 'promise').then(result =>{
-          that.assert(
-            options.predicate(result.res, result.text, args),
-            options.msgSuccess(args),
-            options.msgFail(args),
-            options.expected(args),
-            options.actual(result.res, result.text)
-          );
-        });
+        derivedPromise = assert(utils.flag(this, 'promise'), options, that, args);
       }
 
       transferPromiseness(that, derivedPromise);
@@ -70,6 +62,7 @@ module.exports = (chai, utils) => {
       return result;
     })
   }
+
 
   function transferPromiseness(assertion, promise) {
     assertion.then = promise.then.bind(promise);
