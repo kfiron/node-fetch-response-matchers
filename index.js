@@ -12,17 +12,17 @@ module.exports = (chai, utils) => {
       var result = {};
       var args = arguments;
       var that = this;
-      var derivedPromise;
 
       if (!utils.flag(this, 'promise')) {
         var promise = buildBasedPromiseWithData(this._obj, result, options);
-        derivedPromise = assert(promise, options, that, args);
+        var derivedPromise = assert(promise, options, that, args);
         utils.flag(this, 'promise', derivedPromise);
       } else {
-        derivedPromise = assert(utils.flag(this, 'promise'), options, that, args);
+        var promiseAssert = assert(utils.flag(this, 'promise'), options, that, args)
+        utils.flag(this, 'promise', promiseAssert);
       }
 
-      transferPromiseness(that, derivedPromise);
+      transferPromiseness(that, utils.flag(this, 'promise'));
     });
   }
 
