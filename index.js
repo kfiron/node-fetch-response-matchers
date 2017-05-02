@@ -12,15 +12,33 @@ module.exports = (chai, utils) => {
       var result = {};
       var args = arguments;
       var that = this;
-      var derivedPromise = fetchResult(this._obj, result);
-      derivedPromise = enrichBodyIfBodyMatcher(derivedPromise,
-                                               result,
-                                               options.isBodyMatcher);
-      derivedPromise = assert(derivedPromise, options, that, args);
+      var derivedPromise;
 
-      // credit to chai-as-promised
+      if (!utils.flag(this, 'promise')) {
+        var promise = buildBasedPromiseWithData(this._obj, result, options);
+        derivedPromise = assert(promise, options, that, args);
+        utils.flag(this, 'promise', derivedPromise);
+      } else {
+        derivedPromise = utils.flag(this, 'promise').then(result =>{
+          that.assert(
+            options.predicate(result.res, result.text, args),
+            options.msgSuccess(args),
+            options.msgFail(args),
+            options.expected(args),
+            options.actual(result.res, result.text)
+          );
+        });
+      }
+
       transferPromiseness(that, derivedPromise);
     });
+  }
+
+  function buildBasedPromiseWithData(obj, result, options){
+    var promise = fetchResult(obj, result);
+    return enrichBody(promise,
+      result,
+      options.isBodyMatcher);
   }
 
   function fetchResult(promise, result) {
@@ -30,20 +48,17 @@ module.exports = (chai, utils) => {
     });
   }
 
-  function enrichBodyIfBodyMatcher(promise, result, conditation) {
-    if (conditation) {
-      return promise.then(result => {
-        return result.res.text();
-      }).then(text => {
-        result.text = text;
-        return result;
-      });
-    } else {
-      return promise;
-    }
+  function enrichBody(promise, result) {
+    return promise.then(result => {
+      return result.res.text();
+    }).then(text => {
+      result.text = text;
+      return result;
+    });
   }
 
-  function assert(promise, options, that, args){
+
+  function assert(promise, options, that, args) {
     return promise.then(result => {
       that.assert(
         options.predicate(result.res, result.text, args),
@@ -52,6 +67,7 @@ module.exports = (chai, utils) => {
         options.expected(args),
         options.actual(result.res, result.text)
       );
+      return result;
     })
   }
 
