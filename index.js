@@ -49,7 +49,6 @@ module.exports = (chai, utils) => {
     });
   }
 
-
   function assert(promise, options, that, args) {
     return promise.then(result => {
       that.assert(
@@ -63,11 +62,9 @@ module.exports = (chai, utils) => {
     })
   }
 
-
   function transferPromiseness(assertion, promise) {
     assertion.then = promise.then.bind(promise);
   }
-
 };
 
 
