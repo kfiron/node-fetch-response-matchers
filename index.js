@@ -29,8 +29,7 @@ module.exports = (chai, utils) => {
   function buildBasedPromiseWithData(obj, result, options){
     var promise = fetchResult(obj, result);
     return enrichBody(promise,
-      result,
-      options.isBodyMatcher);
+      result);
   }
 
   function fetchResult(promise, result) {
