@@ -9,24 +9,22 @@ module.exports = (chai, utils) => {
 
   function method(options) {
     utils.addMethod(chai.Assertion.prototype, options.name, function () {
-      var result = {};
-      var args = arguments;
-      var that = this;
 
       if (!utils.flag(this, 'promise')) {
-        var promise = buildBasedPromiseWithData(this._obj, result, options);
-        var derivedPromise = assert(promise, options, that, args);
+        var promise = buildBasedPromiseWithData(this._obj);
+        var derivedPromise = assert(promise, options, this, arguments);
         utils.flag(this, 'promise', derivedPromise);
       } else {
-        var promiseAssert = assert(utils.flag(this, 'promise'), options, that, args)
+        var promiseAssert = assert(utils.flag(this, 'promise'), options, this, arguments);
         utils.flag(this, 'promise', promiseAssert);
       }
 
-      transferPromiseness(that, utils.flag(this, 'promise'));
+      transferPromiseness(this, utils.flag(this, 'promise'));
     });
   }
 
-  function buildBasedPromiseWithData(obj, result, options){
+  function buildBasedPromiseWithData(obj){
+    var result = {};
     var promise = fetchResult(obj, result);
     return enrichBody(promise,
       result);

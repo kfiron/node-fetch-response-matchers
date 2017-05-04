@@ -1,6 +1,6 @@
 {
   "name": "node-fetch-response-matchers",
-  "version": "1.1.28",
+  "version": "1.1.29",
   "description": "Chai asserts for node-fetch response promise, make your tests with http more declarative",
   "keywords": [
     "chai",
