@@ -147,10 +147,10 @@ You can all use chai "not"
 
 ```javascript
    it('must-revalidate', () => {
-     return expect(fetch('http://localhost/').to.cacheControlMustRevalidate();
+     return expect(fetch('http://localhost/').to.have.cacheControlMustRevalidate();
    });
    it('max-age', () => {
-        return expect(fetch('http://localhost/').to.cacheControlmMaxAge(120);
+        return expect(fetch('http://localhost/').to.have.cacheControlmMaxAge(120);
    });
 ```
 #### cache control full matchers list
