@@ -143,7 +143,7 @@ You can all use chai "not"
 | haveCookie()       | (name, value)              | Assert that cookie by name and value is written to the response           |
 | haveCookieThat()   | (name, predicate(cookie))  | Assert that cookie by name and match given predicate on cookie properties |
 
-## Cookie cache control response matchers
+## Cache control response matchers
 
 ```javascript
    it('must-revalidate', () => {
