@@ -47,4 +47,8 @@ module.exports.fetchWithCookie = (name, val) => {
   return nodeFetch(`http://localhost:3000/cookie/${name}/${val}`);
 };
 
+module.exports.fetchCache = (val) => {
+  return nodeFetch(`http://localhost:3000/cache/${val}`);
+};
+
 

@@ -143,3 +143,29 @@ You can all use chai "not"
 | haveCookie()       | (name, value)              | Assert that cookie by name and value is written to the response           |
 | haveCookieThat()   | (name, predicate(cookie))  | Assert that cookie by name and match given predicate on cookie properties |
 
+## Cookie cache control response matchers
+
+```javascript
+   it('must-revalidate', () => {
+     return expect(fetch('http://localhost/').to.cacheControlMustRevalidate();
+   });
+   it('max-age', () => {
+        return expect(fetch('http://localhost/').to.cacheControlmMaxAge(120);
+   });
+```
+#### cache control full matchers list
+
+
+| API function                  | params      |
+| ------------------------------|-------------|
+| cacheControlMustRevalidate()  | ()          |
+| cacheControlNoCache()         | ()          |
+| cacheControlNoStore()         | ()          |
+| cacheControlNoTransform()     | ()          |
+| cacheControlPublic()          | ()          |
+| cacheControlPrivate()         | ()          |
+| cacheControlProxyMaxRevalidate| ()          |
+| cacheControlmMaxAge()         | (age-in-sec)|
+| cacheControlSMaxAge()         | (age-in-sec)|
+
+
