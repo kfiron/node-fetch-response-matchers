@@ -1,54 +1,39 @@
 'use strict';
 const nodeFetch = require('node-fetch');
 
+var baseUrl = 'http://localhost:3000';
 
-module.exports.fetchSuccess = () => {
-  return nodeFetch('http://localhost:3000/status/200');
+module.exports =  {
+  fetchSuccess: function(){
+    return nodeFetch(`${baseUrl}/status/200`);
+  },
+  fetchNotSuccess: function(){
+    return nodeFetch(`${baseUrl}/status/400`);
+  },
+  fetchCreated: function(){
+    return nodeFetch(`${baseUrl}/status/201`);
+  },
+  fetchUnauthorized: function(){
+    return nodeFetch(`${baseUrl}/status/401`);
+  },
+  fetchServiceUnavailable: function(){
+    return nodeFetch(`${baseUrl}/status/503`);
+  },
+  fetchNotFound: function(){
+    return nodeFetch(`${baseUrl}/not-found`);
+  },
+  fetchServerError: function(){
+    return nodeFetch(`${baseUrl}/status/500`);
+  },
+  fetchWithStatus: function(code){
+    return nodeFetch(`${baseUrl}/status/${code}`);
+  },
+  fetchWithCookie: function(name, val){
+    return nodeFetch(`${baseUrl}/cookie/${name}/${val}`);
+  },
+  fetchCache: function(val){
+    return nodeFetch(`${baseUrl}/cache/${val}`);
+  }
+
 };
-
-module.exports.fetchNotSuccess = () => {
-  return nodeFetch('http://localhost:3000/status/400');
-};
-
-module.exports.fetchRejected = () => {
-  return nodeFetch('http://localhost:3000/status/403');
-};
-
-module.exports.fetchCreated = () => {
-  return nodeFetch('http://localhost:3000/status/201');
-};
-
-
-module.exports.fetchUnauthorized = () => {
-  return nodeFetch('http://localhost:3000/status/401');
-};
-
-module.exports.fetchForbidden = () => {
-  return nodeFetch('http://localhost:3000/forbidden');
-};
-
-module.exports.fetchServiceUnavailable = () => {
-  return nodeFetch('http://localhost:3000/status/503');
-};
-
-module.exports.fetchNotFound = () => {
-  return nodeFetch('http://localhost:3000/not-found');
-};
-
-module.exports.fetchServerError = () => {
-  return nodeFetch('http://localhost:3000/status/500');
-};
-
-module.exports.fetchWithStatus = code => {
-  return nodeFetch('http://localhost:3000/status/' + code);
-};
-
-module.exports.fetchWithCookie = (name, val) => {
-  return nodeFetch(`http://localhost:3000/cookie/${name}/${val}`);
-};
-
-module.exports.fetchCache = val => {
-  return nodeFetch(`http://localhost:3000/cache/${val}`);
-};
-
 
