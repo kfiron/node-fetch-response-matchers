@@ -5,35 +5,38 @@ var baseUrl = 'http://localhost:3000';
 
 module.exports =  {
   fetchSuccess: function(){
-    return nodeFetch(`${baseUrl}/status/200`);
+    return fetch('/status/200');
   },
   fetchNotSuccess: function(){
-    return nodeFetch(`${baseUrl}/status/400`);
+    return fetch('/status/400');
   },
   fetchCreated: function(){
-    return nodeFetch(`${baseUrl}/status/201`);
+    return fetch('/status/201');
   },
   fetchUnauthorized: function(){
-    return nodeFetch(`${baseUrl}/status/401`);
+    return fetch('/status/401');
   },
   fetchServiceUnavailable: function(){
-    return nodeFetch(`${baseUrl}/status/503`);
+    return fetch('/status/503');
   },
   fetchNotFound: function(){
-    return nodeFetch(`${baseUrl}/not-found`);
+    return fetch('/not-found');
   },
   fetchServerError: function(){
-    return nodeFetch(`${baseUrl}/status/500`);
+    return fetch('/status/500');
   },
   fetchWithStatus: function(code){
-    return nodeFetch(`${baseUrl}/status/${code}`);
+    return fetch(`/status/${code}`);
   },
   fetchWithCookie: function(name, val){
-    return nodeFetch(`${baseUrl}/cookie/${name}/${val}`);
+    return fetch(`/cookie/${name}/${val}`);
   },
   fetchCache: function(val){
-    return nodeFetch(`${baseUrl}/cache/${val}`);
+    return fetch(`/cache/${val}`);
   }
-
 };
+
+function fetch(path){
+  return nodeFetch(`${baseUrl}${path}`);
+}
 
