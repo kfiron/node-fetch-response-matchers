@@ -3,24 +3,24 @@ const nodeFetch = require('node-fetch');
 
 
 module.exports.fetchSuccess = () => {
-  return nodeFetch('http://localhost:3000/success');
+  return nodeFetch('http://localhost:3000/status/200');
 };
 
 module.exports.fetchNotSuccess = () => {
-  return nodeFetch('http://localhost:3000/not-success');
+  return nodeFetch('http://localhost:3000/status/400');
 };
 
 module.exports.fetchRejected = () => {
-  return nodeFetch('http://localhost:3000/reject');
+  return nodeFetch('http://localhost:3000/status/403');
 };
 
 module.exports.fetchCreated = () => {
-  return nodeFetch('http://localhost:3000/created');
+  return nodeFetch('http://localhost:3000/status/201');
 };
 
 
 module.exports.fetchUnauthorized = () => {
-  return nodeFetch('http://localhost:3000/un-authorized');
+  return nodeFetch('http://localhost:3000/status/401');
 };
 
 module.exports.fetchForbidden = () => {
@@ -28,7 +28,7 @@ module.exports.fetchForbidden = () => {
 };
 
 module.exports.fetchServiceUnavailable = () => {
-  return nodeFetch('http://localhost:3000/service-unavailable');
+  return nodeFetch('http://localhost:3000/status/503');
 };
 
 module.exports.fetchNotFound = () => {
@@ -36,7 +36,7 @@ module.exports.fetchNotFound = () => {
 };
 
 module.exports.fetchServerError = () => {
-  return nodeFetch('http://localhost:3000/server-error');
+  return nodeFetch('http://localhost:3000/status/500');
 };
 
 module.exports.fetchWithStatus = code => {
