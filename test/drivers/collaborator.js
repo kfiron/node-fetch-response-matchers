@@ -3,23 +3,28 @@ const express = require('express');
 
 var app = express();
 const response = {foo: 'bar'};
+const ok = 200;
 
 
 app.get('/status/:status', function (req, res) {
-  res.statusCode = req.params['status'];
-  res.send(JSON.stringify(response))
+  sendResponse(res, req.params['status']);
 });
 
 app.get('/cache/:res', function (req, res) {
   res.setHeader('Cache-Control', req.params['res']);
-  res.send(JSON.stringify(response))
+  sendResponse(res, ok);
 });
 
 app.get('/cookie/:name/:val', function (req, res) {
   res.cookie(req.params['name'], req.params['val'], { domain: '.example.com'});
   res.cookie('foo', 'bar', { domain: '.example.com'});
-  res.send(JSON.stringify(response))
+  sendResponse(res, ok);
 });
+
+function sendResponse(res, status){
+  res.statusCode = status;
+  res.send(JSON.stringify(response))
+}
 
 
 var server;
