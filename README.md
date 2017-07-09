@@ -106,9 +106,9 @@ You can all use chai "not"
 | ----------------------|-------------------| -------------------------------------------------------------|
 | haveBodyObject()      | (obj)             | Assert equal provided object                                 |
 | haveBodyText()        | (text)            | Assert equal provided string text                            |
+| haveBodyBuffer()      | (Buffer)          | Assert equal provided Node Buffer                            |
 | haveBodyRegexpMatch() | (regexp)          | Assert match body on regular expression                      |
 | haveBodyThat()        | (predicate(text)) | Assert match body on provided function predicate on the text |
-
 
 
 ## Header matchers
