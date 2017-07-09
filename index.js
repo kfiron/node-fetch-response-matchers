@@ -32,17 +32,18 @@ module.exports = (chai, utils) => {
   }
 
   function fetchResult(promise, result) {
-    return promise.then(res => {
-      result.res = res;
+    return promise.then(response => {
+      result.response = response;
       return result;
     });
   }
 
   function enrichBody(promise, result) {
     return promise.then(result => {
-      return result.res.text();
-    }).then(text => {
-      result.text = text;
+      return result.response.buffer();
+    }).then(buffer => {
+      result.buffer = buffer;
+      result.text = buffer.toString();
       return result;
     });
   }
@@ -50,11 +51,11 @@ module.exports = (chai, utils) => {
   function assert(promise, options, that, args) {
     return promise.then(result => {
       that.assert(
-        options.predicate(result.res, result.text, args),
+        options.predicate(result, args),
         options.msgSuccess(args),
         options.msgFail(args),
         options.expected(args),
-        options.actual(result.res, result.text)
+        options.actual(result)
       );
       return result;
     })

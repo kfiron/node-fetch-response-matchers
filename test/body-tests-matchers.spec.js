@@ -4,7 +4,8 @@ const expect = require('chai').expect,
   err = require('./drivers/test-helpers').err,
   beforeAndAfter = require('./drivers/test-helpers').beforeAndAfter,
   nodeFetch = require('./drivers/fetch-driver'),
-  nodeFetchMatchers = require('..');
+  nodeFetchMatchers = require('..'),
+  uuid = require('uuid-random');
 
 describe('body fetch matchers', function () {
 
@@ -39,6 +40,20 @@ describe('body fetch matchers', function () {
       });
     });
 
+    describe('haveBodyBuffer', () => {
+      it('success', () => {
+        const expectedBody = uuid();
+        return expect(nodeFetch.fetchBufferSuccess(expectedBody)).to.haveBodyBuffer(Buffer.from(expectedBody));
+      });
+      it('fail', done => {
+        const actualBody = uuid();
+        const actualBodyBuffer = Buffer.from(actualBody);
+        const expectedFailedBodyBuffer = Buffer.from('bla');
+        return err(expect(nodeFetch.fetchBufferSuccess(actualBody)).to.haveBodyBuffer(expectedFailedBodyBuffer),
+          `expected ${chai.util.objDisplay(expectedFailedBodyBuffer)} to match body with ${chai.util.objDisplay(actualBodyBuffer)}`,
+          done);
+      });
+    });
 
     describe('haveBodyRegexpMatch', function(){
       it('success', () => {
@@ -55,6 +70,8 @@ describe('body fetch matchers', function () {
       const haveFoo = text => text.indexOf('foo') != -1;
       return expect(nodeFetch.fetchSuccess()).to.be.haveBodyThat(haveFoo);
     });
+
+
   });
 
 

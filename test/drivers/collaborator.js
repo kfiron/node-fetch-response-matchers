@@ -10,6 +10,11 @@ app.get('/status/:status', function (req, res) {
   sendResponse(res, req.params['status']);
 });
 
+app.get('/buffer/:request', function (req, res) {
+  res.status(200);
+  res.send(req.params['request'])
+});
+
 app.get('/cache/:res', function (req, res) {
   res.setHeader('Cache-Control', req.params['res']);
   sendResponse(res, ok);
