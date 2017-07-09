@@ -24,13 +24,15 @@
     "node": ">=4"
   },
   "dependencies": {
-    "set-cookie-parser": "^2.0.0"
+    "set-cookie-parser": "^2.0.0",
+    "buffer-equal": "~1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "express": "^4.15.2",
     "mocha": "~3.2.0",
     "node-fetch": "^1.6.3",
-    "sinon": "~1.17.6"
+    "sinon": "~1.17.6",
+    "uuid-random": "~1.0.6"
   }
 }

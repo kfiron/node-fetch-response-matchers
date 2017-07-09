@@ -1,11 +1,14 @@
 'use strict';
 const nodeFetch = require('node-fetch');
 
-var baseUrl = 'http://localhost:3000';
+const baseUrl = 'http://localhost:3000';
 
 module.exports =  {
   fetchSuccess: function(){
     return fetch('/status/200');
+  },
+  fetchBufferSuccess: request => {
+    return fetch(`/buffer/${request}`);
   },
   fetchNotSuccess: function(){
     return fetch('/status/400');
