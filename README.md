@@ -66,7 +66,7 @@ You can all use chai "not"
    });
 ```
 
-### afterwards support
+### Afterwards support
 Let's say we need multiple different node-fetch that should run after each other
 
 ```javascript
