@@ -8,10 +8,14 @@ module.exports = (chai, utils) => {
   require('./lib/cookie-methods')(method);
   require('./lib/cache-control-methods')(method);
 
+  method({name: 'afterwards'});
+
   function method(options) {
     utils.addMethod(chai.Assertion.prototype, options.name, function () {
 
-      if (!utils.flag(this, 'promise')) {
+      if(options.name === 'afterwards'){
+        transferPromiseness(arguments[0], utils.flag(this, 'promise'));
+      } else if (!utils.flag(this, 'promise')) {
         var promise = buildBasedPromiseWithData(this._obj);
         var derivedPromise = assert(promise, options, this, arguments);
         utils.flag(this, 'promise', derivedPromise);
@@ -20,7 +24,9 @@ module.exports = (chai, utils) => {
         utils.flag(this, 'promise', promiseAssert);
       }
 
-      transferPromiseness(this, utils.flag(this, 'promise'));
+      if(options.name != 'afterwards'){
+        transferPromiseness(this, utils.flag(this, 'promise'));
+      }
     });
   }
 

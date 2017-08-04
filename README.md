@@ -66,6 +66,28 @@ You can all use chai "not"
    });
 ```
 
+### Afterwards support
+Let's say we need multiple different node-fetch that should run after each other
+
+```javascript
+   // Ugly way, callback hell
+   it('not', function(){
+      return expect(fetch('http://localhost/'))
+                    .to.not.be.successful()
+                    .then(() => {
+                       return expect(fetch('http://localhost/reject').to.be.rejected();
+                    });
+   });
+
+   // Afterwards support
+      it('not', function(){
+         return expect(fetch('http://localhost/')).to.not.be.successful()
+                       .and.afterwards(fetch('http://localhost/rejected'))
+                       .to.be.rejected();
+      });
+```
+
+
 
 ## Status matchers
 
