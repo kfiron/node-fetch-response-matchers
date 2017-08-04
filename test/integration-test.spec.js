@@ -35,13 +35,6 @@ describe('status fetch matchers', function () {
         'expected { invalid: \'object\' } to match body with { foo: \'bar\' }',
         done);
     });
-    it('success', () => {
-      return assert().to.be.successful()
-        .and.to.haveBodyObject(responseObject)
-        .and.afterwards(nodeFetch.fetchSuccess())
-        .to.be.successful()
-        .and.to.haveBodyObject({foo: 'bar'});
-    });
   });
 
 });

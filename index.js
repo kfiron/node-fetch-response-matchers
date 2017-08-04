@@ -1,5 +1,4 @@
 'use strict';
-const expect = require('chai').expect;
 
 module.exports = (chai, utils) => {
 
@@ -9,14 +8,10 @@ module.exports = (chai, utils) => {
   require('./lib/cookie-methods')(method);
   require('./lib/cache-control-methods')(method);
 
-  method({name: 'afterwards'});
-
   function method(options) {
     utils.addMethod(chai.Assertion.prototype, options.name, function () {
 
-      if(options.name === 'afterwards'){
-        return expect(arguments[0]);
-      } else if (!utils.flag(this, 'promise')) {
+      if (!utils.flag(this, 'promise')) {
         var promise = buildBasedPromiseWithData(this._obj);
         var derivedPromise = assert(promise, options, this, arguments);
         utils.flag(this, 'promise', derivedPromise);
