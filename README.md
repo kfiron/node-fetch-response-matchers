@@ -85,6 +85,7 @@ You can all use chai "not"
 | ---------------------|----------| ---------------------------------|
 | successful()         | ()       | Assert that the status is 200 OK |
 | created()            | ()       | Assert that the status is 201    |
+| badRequest()         | ()       | Assert that the status is 400    |
 | unauthorized()       | ()       | Assert that the status is 401    |
 | rejected()           | ()       | Assert that the status is 403    |
 | notFound()           | ()       | Assert that the status is 404    |

@@ -3,7 +3,6 @@ const expect = require('chai').expect,
   chai = require('chai'),
   err = require('./drivers/test-helpers').err,
   beforeAndAfter = require('./drivers/test-helpers').beforeAndAfter,
-  collaborator = require('./drivers/collaborator'),
   nodeFetch = require('./drivers/fetch-driver'),
   nodeFetchMatchers = require('..');
 
@@ -33,6 +32,9 @@ describe('status fetch matchers', function () {
           'expected http status 401 to equal 201',
           done)
       });
+      it('badRequest', () => {
+        return expect(nodeFetch.fetchNotSuccess()).to.be.a.badRequest();
+      });
       it('unauthorized', () => {
         return expect(nodeFetch.fetchUnauthorized()).to.be.unauthorized();
       });
@@ -58,8 +60,5 @@ describe('status fetch matchers', function () {
           done);
       });
     });
-
   });
-
-
 });
