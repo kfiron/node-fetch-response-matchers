@@ -16,6 +16,9 @@ module.exports =  {
   fetchCreated: function(){
     return fetch('/status/201');
   },
+  fetchAccepted: function() {
+    return fetch('/status/202');
+  },
   fetchUnauthorized: function(){
     return fetch('/status/401');
   },

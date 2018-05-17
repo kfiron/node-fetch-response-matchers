@@ -32,6 +32,9 @@ describe('status fetch matchers', function () {
           'expected http status 401 to equal 201',
           done)
       });
+      it('accepted', () => {
+        return expect(nodeFetch.fetchAccepted()).to.be.accepted();
+      })
       it('badRequest', () => {
         return expect(nodeFetch.fetchNotSuccess()).to.be.a.badRequest();
       });
